@@ -1,0 +1,25 @@
+{% extends "tasks/layout.html" %}  <!-- This is template inherintance. saying I'm inheriting from tasks/layout.html template -->
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+  </head>
+  <body> -->
+{% block body %}
+    <h1>Tasks</h1>
+    <ul>
+      {% for task in tasks %}
+        <li>{{ task }}</li>
+      {% empty %}
+        <li>No tasks.</li>
+      {% endfor %}
+    </ul>
+    <!-- <a href="/tasks/add">Add a New Task</a>  If I use this way and need to make a change to the url I would have to make the change in urls.py and in every place this url exists-->
+    <a href="{% url 'tasks:add' %}">Add a New Task</a>  <!-- This is how django helps us solve the previous problem using the name of the url.    tasks:index  from tasks app get the index url-->
+{% endblock %}
+  <!-- </body>
+</html> -->

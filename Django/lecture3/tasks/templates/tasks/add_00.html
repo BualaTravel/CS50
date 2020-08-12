@@ -1,0 +1,24 @@
+{% extends "tasks/layout.html" %}  <!-- This is template inherintance. saying I'm inheriting from tasks/layout.html template -->
+
+<!-- <!DOC{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+  </head>
+  <body> -->
+{% block body %}
+    <h1>Add Task</h1>
+    <form action="{% url 'tasks:add'%}" method="post">  <!-- post as a contrary to GET method sends data instead of requesting -->
+      {% csrf_token %}   <!-- Adds security token due to a token method -->
+      <input type="text" name="task" value="">
+      <input type="submit">
+    </form>
+    <a href="{% url 'tasks:index' %}">View Tasks</a>
+{% endblock %}
+  <!-- </body>
+</html> -->
+
+<!-- Now an alternative an easier way to deal with Forms thanks to django -->
