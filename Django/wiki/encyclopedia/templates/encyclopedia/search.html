@@ -5,8 +5,17 @@
 {% endblock %}
 
 {% block body %}
+{% if searches|length >= 1 %}
   <div class="search">
-
+    <h1>All Matches</h1>
+    <ul>
+          {% for search in searches %}
+          <li> <a href="{% url 'encyclopedia:entry' search %}"> {{ search }} </a>  </li>
+          {% endfor %}
+    </ul>
   </div>
+{% else %}
+  <h1>No Matches. </h1>
+{% endif %}
 
 {% endblock %}

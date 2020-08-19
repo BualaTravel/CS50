@@ -8,10 +8,9 @@
     <h1>All Pages</h1>
 
     <ul>
-        {% for ent in entries %}
-        <li> <a href="{% url 'encyclopedia:entry' ent %}"> {{ ent }} </a>  </li>
-
-        {% endfor %}
+          {% for ent in entries %}
+          <li> <a href="{% url 'encyclopedia:entry' ent %}"> {{ ent }} </a>  </li>
+          {% endfor %}      
     </ul>
 
 {% endblock %}
