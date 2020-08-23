@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+{{ form.non_field_errors }}
+
+<div class="container-fluid">
+  <div class="edit_entry text-center">
+    <h1>{{title}}</h1>
+    <form action="{% url 'encyclopedia:edit' title%}" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-12">
+          <div class="fieldWrapper">
+              {{ form.text.errors }}
+              {{ form.text.label_tag }}
+              {{ form.text }}
+          </div>
+          <button type="submit" class="btn btn-primary">Edit Entry</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

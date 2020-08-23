@@ -1,0 +1,40 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+<!-- <div class="container-fluid">
+  <div class="create_entry">
+    <form method="post">
+      <div class="row">
+        <div class="col-10">
+              <textarea class="mb-2 form-control" rows="1" placeholder="Title of new entry"></textarea>
+              <textarea class="form-control" rows="10" placeholder="Text of new entry"></textarea>
+              <button type="submit" class="btn btn-primary">Create New Entry</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->
+{% if entry_error %}
+YA EXISTE. INTENTA OTRO TITULO.
+{% endif %}
+{{ form.non_field_errors }}
+<form action="{% url 'encyclopedia:create'%}" method="post" >
+{% csrf_token %}
+{% for field in form %}
+
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+<button type="submit" class="btn btn-primary">Create New Entry</button>
+</form>
+
+{% endblock %}

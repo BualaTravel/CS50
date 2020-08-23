@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="row">
-            <div class="sidebar col-lg-2 col-md-3">
+            <div class="sidebar col-lg-2 col-md-3 col-sm-3 col-xs-2">
                 <h2>Wiki</h2>
                 <form action="{% url 'encyclopedia:entry' 'search' %}">
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
@@ -19,7 +19,7 @@
                     <a href="{% url 'encyclopedia:index' %}">Home</a>
                 </div>
                 <div>
-                    Create New Page
+                    <a href="{% url 'encyclopedia:create' %}">Create New Page</a>
                 </div>
                 <div>
                     Random Page
@@ -27,7 +27,7 @@
                 {% block nav %}
                 {% endblock %}
             </div>
-            <div class="main col-lg-10 col-md-9">
+            <div class="main col-lg-10 col-md-9 col-sm-9 col-xs-10">
                 {% block body %}
                 {% endblock %}
             </div>

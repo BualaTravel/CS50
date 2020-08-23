@@ -6,8 +6,13 @@
 
 {% block body %}
 <div class="entry">
+  <div class="row">
+    {{title}}
+    <a class="col-11 text-right" href="{% url 'encyclopedia:edit' title %}"> Edit Page</a>
+  </div>
     {{ page|safe }}
     <!-- #<a class="edit" href=/edit/{{title}}>Edit Page</a> -->
+
 </div>
 
 {% endblock %}
