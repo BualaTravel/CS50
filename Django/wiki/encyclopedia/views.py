@@ -9,6 +9,8 @@ from .models import Post
 from django.core.files import File
 from django.conf import settings
 
+import random
+
 
 class NewCreateForm(forms.Form):
     title = forms.CharField(max_length=100)
@@ -26,6 +28,14 @@ def index(request):
         "entries": util.list_entries(),
     })
 
+def randomEntries():
+    list_entries = util.list_entries()
+    random_entry = random.choice(list_entries)
+    print("random item from list is: ",random_entry)
+    return random_entry
+
+
+
 def search(title):
     title = title.replace('q=', '').lower()
     entries = list(map(str.lower, util.list_entries()))
@@ -38,6 +48,9 @@ def search(title):
     return (matching_idx, False)
 
 def entry(request, title= None):
+
+    if title == 'random_entry':
+        title = randomEntries()
 
     if title == 'search':
         print(f'SEARCH SECTION: {request.META["QUERY_STRING"] }')
